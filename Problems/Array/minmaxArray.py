@@ -22,3 +22,5 @@ for i in arr:
         minval = i
 print(maxval,minval)
 
+
+
