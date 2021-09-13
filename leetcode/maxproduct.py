@@ -15,4 +15,3 @@ def maxproduct(nums):
 nums = [-3,-14,-3]
 maxproduct(nums)
 
--2*-2

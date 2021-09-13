@@ -37,3 +37,6 @@ def representbasemap(n,b,map1):
 representbasemap(-3354,12,'01234567890abcdefghijklmnopqrstuvwxyz')
         
         
+        
+from random import randint
+        
