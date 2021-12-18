@@ -8,7 +8,8 @@ sorted(l)
 l = ['c','D','a','E','F']
 sorted(l)
 
-# ['D', 'E', 'F', 'a', 'c'] this is not the sorted value  we will use the kay argument which contain the f function 
+# ['D', 'E', 'F'
+# , 'a', 'c'] this is not the sorted value  we will use the kay argument which contain the f function 
 # that will convert the value  in upper case and  sort the value based on that upercase value 
 x = 'k'
 
@@ -18,4 +19,15 @@ sorted(l,key=lambda x:x.upper())
 # 
 mark = {'a':10,'z':100,'c':50,'m':89,'r':35}
 sorted(mark,key = lambda x:mark[x])
+
+
+
+
+
+
+
+
+
+
+
     
