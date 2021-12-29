@@ -3,7 +3,7 @@ class Person:
     abc = '12345'
     pass
 
-
+import pandas 
 Person.name
 
 type(Person)
