@@ -9,23 +9,27 @@ class Node:
         self.right = None
         self.value = value
         
-def IterativeInorder(node):
+def preorder(node,ans):
+    if node == None:
+        return ans
+    ans.append(node.value)
+    preorder(node.left,ans)
+    preorder(node.right,ans)
+    return ans
+        
+def boundrytree(node):
     ans = []
     if node == None:
         return ans
-    stack = []
-    while True:
-        if node != None:
-            stack.append(node)
-            node = node.left
-        else:
-            if not stack:
-                break
-            node = stack.pop()
-            ans.append(node.value)
-            node = node.right
-                
+    ans.append(node.value)
+    leftnodevalue = preorder(node.left,[])
+    rightnodevalue = preorder(node.right,[])
+    ans.extend(leftnodevalue)
+    ans.extend(rightnodevalue[::-1])
     return ans
+            
+    
+    
 
 
 if __name__ == '__main__':
@@ -33,11 +37,10 @@ if __name__ == '__main__':
            1
          /   \
         2      3
-     /    \    
-   4       5     
-         /   \Answer
-        6     7
-
+     /    \    /  \
+   4       5   6    7  
+   
+   
    '''
 
     root = Node(1)
@@ -45,8 +48,8 @@ if __name__ == '__main__':
     root.right = Node(3)
     root.left.left = Node(4)
     root.left.right = Node(5)
-    root.left.right.left = Node(6)
-    root.left.right.right = Node(7)
-    answer = IterativeInorder(root)
+    root.right.left = Node(6)
+    root.right.right = Node(7)
+    answer = boundrytree(root)
 
-    print("Answer --------------->", answer)
+    print("boundry --------------->", answer)

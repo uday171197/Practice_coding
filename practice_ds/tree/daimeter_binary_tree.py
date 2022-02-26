@@ -11,12 +11,12 @@ class Node:
 
 def daimeter(node,maxlength):
     if node == None:
-        return 0
-    lh = daimeter(node.left,maxlength)
-    rh = daimeter(node.right,maxlength)
+        return 0,maxlength
+    lh,maxlength = daimeter(node.left,maxlength)
+    rh,maxlength = daimeter(node.right,maxlength)
     maxlength = max((lh + rh),maxlength)
-    print(lh,rh,maxlength)
-    return 1+ max(lh,rh)
+    # print(lh,rh,maxlength)
+    return 1+ max(lh,rh),maxlength
 
 
 if __name__ == '__main__':
@@ -45,5 +45,5 @@ if __name__ == '__main__':
     root.right.left.left.left = Node(8)
     root.right.right.right.right = Node(9)
     
-    answer = daimeter(root,0)
-    print("Answer --------------->", answer)
+    answer,maxlength = daimeter(root,0)
+    print("Daimeter of tree is  --------------->", maxlength)

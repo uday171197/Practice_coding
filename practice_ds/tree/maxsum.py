@@ -9,23 +9,16 @@ class Node:
         self.right = None
         self.value = value
         
-def IterativeInorder(node):
-    ans = []
+def Maxsum(node,maxvalue):
     if node == None:
-        return ans
-    stack = []
-    while True:
-        if node != None:
-            stack.append(node)
-            node = node.left
-        else:
-            if not stack:
-                break
-            node = stack.pop()
-            ans.append(node.value)
-            node = node.right
-                
-    return ans
+        return 0,maxvalue
+    
+    leftsum,maxvalue = Maxsum(node.left,maxvalue)
+    rightsum,maxvalue = Maxsum(node.right,maxvalue)
+    
+    maxvalue = max(maxvalue,leftsum + rightsum + node.value)
+    return node.value + max(leftsum ,rightsum),maxvalue
+    
 
 
 if __name__ == '__main__':
@@ -35,7 +28,7 @@ if __name__ == '__main__':
         2      3
      /    \    
    4       5     
-         /   \Answer
+         /   \
         6     7
 
    '''
@@ -44,9 +37,9 @@ if __name__ == '__main__':
     root.left = Node(2)
     root.right = Node(3)
     root.left.left = Node(4)
-    root.left.right = Node(5)
+    root.left.right = Node(-5)
     root.left.right.left = Node(6)
     root.left.right.right = Node(7)
-    answer = IterativeInorder(root)
+    answer,maxsum = Maxsum(root,0)
 
-    print("Answer --------------->", answer)
+    print("maxsum --------------->", maxsum)
