@@ -1,0 +1,24 @@
+
+
+def partition(nums,low,hight):
+    pivot = nums[hight]
+    i = low-1
+    
+    for j in range(low,hight):
+        if nums[j] <= pivot:
+            i +=1
+            nums[i],nums[j] = nums[j],nums[i]
+            
+    nums[i+1],nums[hight] = nums[hight],nums[i+1]
+    return i+1
+
+
+def QuickSort(nums,low,hight):
+    if low < hight:
+        pivot_index = partition(nums,low,hight)
+        QuickSort(nums,low,pivot_index-1)
+        QuickSort(nums,pivot_index+1,hight)
+
+
+nums = [-2,45,0,11,-9]
+QuickSort(nums,0,len(nums)-1)
